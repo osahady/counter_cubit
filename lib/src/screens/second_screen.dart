@@ -60,6 +60,7 @@ class SecondScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            key: Key('second_counter_increment'),
             onPressed: () {
               context.read<CounterCubit>().increment();
             },
@@ -68,6 +69,7 @@ class SecondScreen extends StatelessWidget {
           ),
           SizedBox(width: 15),
           FloatingActionButton(
+            key: Key('second_counter_decrement'),
             onPressed: () {
               context.read<CounterCubit>().decrement();
             },

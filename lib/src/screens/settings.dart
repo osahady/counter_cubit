@@ -21,32 +21,43 @@ class AppSettings extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Builder(builder: (context) {
-              final appNotificationState = context.select(
-                (SettingsCubit settings) => settings.state.appNotifications,
-              );
+            Builder(
+                key: Key('settings_builder_app'),
+                builder: (context) {
+                  final appNotificationState = context.select(
+                    (SettingsCubit settings) => settings.state.appNotifications,
+                  );
 
-              return SwitchListTile(
-                value: appNotificationState,
-                title: Text('App Notifications'),
-                onChanged: (value) {
-                  context.read<SettingsCubit>().toggleAppNotifications(value);
-                },
-              );
-            }),
-            Builder(builder: (context) {
-              final emailNotificationsState = context.select(
-                (SettingsCubit settings) => settings.state.emailNotifications,
-              );
+                  return SwitchListTile(
+                    key: Key('settings_switch_app'),
+                    value: appNotificationState,
+                    title: Text('App Notifications'),
+                    onChanged: (value) {
+                      context
+                          .read<SettingsCubit>()
+                          .toggleAppNotifications(value);
+                    },
+                  );
+                }),
+            Builder(
+                key: Key('settings_builder_email'),
+                builder: (context) {
+                  final emailNotificationsState = context.select(
+                    (SettingsCubit settings) =>
+                        settings.state.emailNotifications,
+                  );
 
-              return SwitchListTile(
-                value: emailNotificationsState,
-                title: Text('Email Notifications'),
-                onChanged: (value) {
-                  context.read<SettingsCubit>().toggleEmailNotifications(value);
-                },
-              );
-            }),
+                  return SwitchListTile(
+                    key: Key('settings_switch_email'),
+                    value: emailNotificationsState,
+                    title: Text('Email Notifications'),
+                    onChanged: (value) {
+                      context
+                          .read<SettingsCubit>()
+                          .toggleEmailNotifications(value);
+                    },
+                  );
+                }),
           ],
         ),
       ),
